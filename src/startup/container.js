@@ -13,7 +13,7 @@ const { HomeService,UserService,SkillService,CommentService } = require('../serv
 const { HomeController,UserController,SkillController,CommentController } = require('../controllers');
 
 // Routes
-const { HomeRoutes } = require('../routes/index.routes');
+const { HomeRoutes,UserRoutes,SkillRoutes,CommentRoutes } = require('../routes/index.routes');
 const Routes = require('../routes');
 
 // Models
@@ -41,7 +41,10 @@ container.register({
     SkillController: asClass(SkillController.bind(SkillController)),
     CommentController: asClass(CommentController.bind(CommentController))
 }).register({
-    HomeRoutes: asFunction(HomeRoutes).singleton()
+    HomeRoutes: asFunction(HomeRoutes).singleton(),
+    UserRoutes: asFunction(UserRoutes).singleton(),
+    SkillRoutes: asFunction(SkillRoutes).singleton(),
+    CommentRoutes: asFunction(CommentRoutes).singleton()
 })
     .register({
         User: asValue(User),
