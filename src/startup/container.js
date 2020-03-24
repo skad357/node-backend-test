@@ -10,7 +10,7 @@ const app = require('.')
 const { HomeService,UserService,SkillService,CommentService } = require('../services');
 
 // Controllers
-const { HomeController } = require('../controllers');
+const { HomeController,UserController,SkillController,CommentController } = require('../controllers');
 
 // Routes
 const { HomeRoutes } = require('../routes/index.routes');
@@ -36,7 +36,10 @@ container.register({
     CommentService: asClass(CommentService).singleton()
 }).register({
     // why bind ? keeps the scope once express needs him
-    HomeController: asClass(HomeController.bind(HomeController))
+    HomeController: asClass(HomeController.bind(HomeController)),
+    UserController: asClass(UserController.bind(UserController)),
+    SkillController: asClass(SkillController.bind(SkillController)),
+    CommentController: asClass(CommentController.bind(CommentController))
 }).register({
     HomeRoutes: asFunction(HomeRoutes).singleton()
 })
