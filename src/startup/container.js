@@ -7,7 +7,7 @@ const config = require('../config');
 const app = require('.')
 
 // services
-const { HomeService } = require('../services');
+const { HomeService,UserService,SkillService,CommentService } = require('../services');
 
 // Controllers
 const { HomeController } = require('../controllers');
@@ -30,7 +30,10 @@ container.register({
     router: asFunction(Routes).singleton(),
     config: asValue(config)
 }).register({
-    HomeService: asClass(HomeService).singleton()
+    HomeService: asClass(HomeService).singleton(),
+    UserService: asClass(UserService).singleton(),
+    SkillService: asClass(SkillService).singleton(),
+    CommentService: asClass(CommentService).singleton()
 }).register({
     // why bind ? keeps the scope once express needs him
     HomeController: asClass(HomeController.bind(HomeController))
