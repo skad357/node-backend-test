@@ -8,9 +8,15 @@ const compression = require('compression');
 // Catch async exceptions
 require('express-async-errors');
 
-const {ErrorMiddleware,NotFoundMiddleware} = require('../middlewares');
+const { ErrorMiddleware, NotFoundMiddleware } = require('../middlewares');
 
-module.exports = function ({ HomeRoutes,UserRoutes,SkillRoutes,CommentRoutes }) {
+module.exports = function ({
+    HomeRoutes,
+    UserRoutes,
+    SkillRoutes,
+    CommentRoutes,
+    AuthRoutes }) {
+        
     const router = express.Router();
     const apiRoutes = express.Router();
 
@@ -20,11 +26,13 @@ module.exports = function ({ HomeRoutes,UserRoutes,SkillRoutes,CommentRoutes }) 
     apiRoutes.use('/user', UserRoutes);
     apiRoutes.use('/skill', SkillRoutes);
     apiRoutes.use('/commment', CommentRoutes);
+    apiRoutes.use('/auth', AuthRoutes);
+
     router.use('/v1/api', apiRoutes);
 
     router.use(NotFoundMiddleware);
     router.use(ErrorMiddleware);
-    
+
 
     return router;
 

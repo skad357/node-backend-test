@@ -1,29 +1,28 @@
 let _userService = null;
 // No Base Controller we missed the Scope 
-class UserController{
-    constructor({UserService}){
-
+class UserController {
+    constructor({ UserService }) {
         _userService = UserService;
     }
-    async get(req,res){
-        const {userId} = req.params;
+    async get(req, res) {
+        const { userId } = req.params;
         const user = await _userService.get(userId)
-        return res.send (user);
+        return res.send(user);
     }
 
-    async getAll(req,res){
+    async getAll(req, res) {
         const users = await _userService.getAll();
         return res.send(users);
     }
-    async update(req,res){
-        const {body}= req;
-        const {userId} = req.params;
+    async update(req, res) {
+        const { body } = req;
+        const { userId } = req.params;
 
-        const updateUser = await _userService.update(userId,body);
+        const updateUser = await _userService.update(userId, body);
         return res.send(updateUser)
     }
-    async delete(req,res){
-        const {userId} = req.params;
+    async delete(req, res) {
+        const { userId } = req.params;
         const deleteUser = await _userService.delete(userId);
         return res.send(deleteUser);
     }
