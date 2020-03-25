@@ -6,5 +6,6 @@ module.exports = {
     PORT: process.env.PORT,
     MONGO_URI: process.env.MONGO_URI,
     APPLICATION: process.env.APPLICATION,
-    JWT_SECRET: process.env.JWT_SECRET
+    JWT_SECRET: process.env.JWT_SECRET,
+    CACHE_KEY: process.env.CACHE_KEY
 }
