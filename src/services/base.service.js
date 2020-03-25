@@ -21,8 +21,8 @@ class BaseService {
 
     }
 
-    async getAll(){
-        return await this.repository.getAll();
+    async getAll(pageSize, pageNum){
+        return await this.repository.getAll(pageSize,pageNum);
     }
     async create(entity){
         return this.repository.create(entity);

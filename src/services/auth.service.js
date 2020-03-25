@@ -9,9 +9,7 @@ class AuthService {
 
     async signUp(user) {
         const { username } = user;
-        console.log('xxxxxxxxxxxx',_userService);
         const userExist = await _userService.getUserByUsername(username);
-        console.log('xxxxxxxxxxxx2222',userExist);
         if (userExist) {
             const error = new Error();
             error.status = 400;

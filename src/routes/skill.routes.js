@@ -1,9 +1,10 @@
 const {Router } = require('express');
+const { ParseIntMiddleware} = require('../middlewares');
 
 module.exports = function ({SkillController}){
 const router = Router();
 
-router.get('/',SkillController.getAll);
+router.get('/', ParseIntMiddleware,SkillController.getAll);
 router.get('/:skillId',SkillController.get);
 router.get('/:userId/all',SkillController.getUserSkills);
 router.post('',SkillController.create);

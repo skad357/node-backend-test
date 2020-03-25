@@ -2,7 +2,6 @@ let _skillService = null;
 // No Base Controller we missed the Scope 
 class SkillController{
     constructor({SkillService}){
-
         _skillService = SkillService;
     }
     async get(req,res){
@@ -12,7 +11,8 @@ class SkillController{
     }
 
     async getAll(req,res){
-        const skills = await _skillService.getAll();
+        const { pageSize, pageNum } = req.query;
+        const skills = await _skillService.getAll(pageSize,pageNum);
         return res.send(skills);
     }
 
